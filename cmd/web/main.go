@@ -22,7 +22,7 @@ var session *scs.SessionManager
 func main() {
 	// change this to true when in production
 	app.InProduction = false
-	log.Println("test")
+
 	// set up the session
 	session = scs.New()
 	session.Lifetime = 24 * time.Hour
