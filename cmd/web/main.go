@@ -1,13 +1,14 @@
 package main
 
 import (
-	"github.com/javalen/bookings/pkg/config"
-	"github.com/javalen/bookings/pkg/handlers"
-	"github.com/javalen/bookings/pkg/render"
 	"fmt"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/javalen/bookings/pkg/config"
+	"github.com/javalen/bookings/pkg/handlers"
+	"github.com/javalen/bookings/pkg/render"
 
 	"github.com/alexedwards/scs/v2"
 )
@@ -21,7 +22,7 @@ var session *scs.SessionManager
 func main() {
 	// change this to true when in production
 	app.InProduction = false
-
+	log.Println("test")
 	// set up the session
 	session = scs.New()
 	session.Lifetime = 24 * time.Hour
