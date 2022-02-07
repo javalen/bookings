@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/gob"
 	"fmt"
 	"log"
 	"net/http"
@@ -8,6 +9,7 @@ import (
 
 	"github.com/javalen/bookings/internal/config"
 	"github.com/javalen/bookings/internal/handlers"
+	"github.com/javalen/bookings/internal/models"
 	"github.com/javalen/bookings/internal/render"
 
 	"github.com/alexedwards/scs/v2"
@@ -20,6 +22,14 @@ var session *scs.SessionManager
 
 // main is the main function
 func main() {
+
+	err := run()
+	if err != nil {
+		log.Fatal(err)
+	}
+	//what am I going to put in the session
+	gob.Register(models.Reservation{})
+
 	// change this to true when in production
 	app.InProduction = false
 
@@ -56,4 +66,8 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func run() error {
+	return nil
 }

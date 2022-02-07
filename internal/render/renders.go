@@ -23,7 +23,10 @@ func NewTemplates(a *config.AppConfig) {
 }
 
 func AddDefaultData(td *models.TemplateData, r *http.Request) *models.TemplateData {
-
+	// This will put something in the session until the next time a page is displayed
+	td.Flash = app.Session.PopString(r.Context(),"flash")
+	td.Error = app.Session.PopString(r.Context(),"error")
+	td.Warning = app.Session.PopString(r.Context(),"warnig")
 	td.CSRFToken = nosurf.Token(r)
 	return td
 }
